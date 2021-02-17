@@ -1,0 +1,21 @@
+library(dplyr)
+library(RColorBrewer)
+
+rm(list = ls())
+questions <- read.delim("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\data\\correcao-questionarios.csv", header = TRUE, sep = ";");
+questions_type <- read.delim("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\data\\composicao-questionarios.csv", header = TRUE, sep = ";");
+
+
+# Verificando a experiencia em programacao
+experiencia_programacao <- questions %>% 
+  count(ExpProg, sort=TRUE, name="total") %>%
+  mutate(percent = paste0(round(100*total/sum(total), 2)));
+
+
+
+
+png("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\Scripts\\Result\\experiencia_prog.png", width = 2048, height = 1024, res = 152);
+pie(as.numeric(x = experiencia_programacao$percent), labels = paste(experiencia_programacao$percent, "%", sep=""), border = "white", radius = 0.9, main = "Experiência em Programacão", clockwise = TRUE, col=brewer.pal(7,"Set1"), cex=0.9);
+legend("left",legend=experiencia_programacao$ExpProg, bty = "n", fill=brewer.pal(7,"Set1"), cex=0.9);
+
+dev.off();

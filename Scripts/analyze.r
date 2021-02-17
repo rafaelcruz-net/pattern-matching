@@ -4,17 +4,6 @@ rm(list = ls())
 questions <- read.delim("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\data\\correcao-questionarios.csv", header = TRUE, sep = ";");
 questions_type <- read.delim("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\data\\composicao-questionarios.csv", header = TRUE, sep = ";");
 
-# Verificando a experiencia em programacao
-experiencia_programacao <- questions %>% 
-                           count(ExpProg, sort=TRUE, name="total") %>%
-                           mutate(percent = paste0(round(100*total/sum(total), 2), '%'));
-
-
-# Verificando a experiencia em .net
-experiencia_dotnet <- questions %>% 
-                      count(ExpNET, sort=TRUE, name="total") %>%
-                      mutate(percent = paste0(round(100*total/sum(total), 2), '%'));
-
 
 # total de acertos e percentual
 question_temp <- questions %>%
@@ -91,4 +80,43 @@ for (row in 1:nrow(question_temp)) {
     question_temp[row, "percentual_erro_if"] <- round(100 * (erro_if / 8), 2);
     question_temp[row, "percentual_erro_pm"] <- round(100 * (erro_pm / 8), 2);
 }
+
+
+# CALCULA O TOTAL DE ACERTOS E ERROS GERAL
+total_acerto_if <- c(total_acerto = sum(question_temp$acerto_IF));
+total_acerto_pm <- c(total_acerto = sum(question_temp$acerto_PM));
+sumarise_acertos <- rbind(total_acerto_if, total_acerto_pm);
+
+png("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\Scripts\\Result\\acerto_if_pm.png", width = 1024, height = 768, res = 92);
+
+# EXPORTA O GRAFICO
+barplot(sumarise_acertos, 
+        beside = TRUE, 
+        ylab= "Total", 
+        col=brewer.pal(7,"Set1"), 
+        names.arg=c("IF/SWTICH","PATTERN MATCHING"), 
+        space = 0.2,
+        main = "Total de acertos entre IF & Pattern Matching");
+
+dev.off();
+
+
+# CALCULA OS ERROS
+total_erro_if <- c(total_erro = sum(question_temp$erro_IF));
+total_erro_pm <- c(total_erro = sum(question_temp$erro_PM));
+sumarise_erros <- rbind(total_erro_if, total_erro_pm);
+
+
+png("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\Scripts\\Result\\erros_if_pm.png", width = 1024, height = 768, res = 92);
+
+# EXPORTA O GRAFICO
+barplot(sumarise_erros, 
+        beside = TRUE, 
+        ylab= "Total", 
+        col=brewer.pal(7,"Set1"), 
+        names.arg=c("IF/SWTICH","PATTERN MATCHING"), 
+        space = 0.2,
+        main = "Total de Erros entre IF & Pattern Matching");
+
+dev.off();
 

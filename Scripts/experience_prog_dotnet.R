@@ -11,13 +11,8 @@ experiencia_dotnet <- questions %>%
   count(ExpNET, sort=TRUE, name="total") %>%
   mutate(percent = paste0(round(100*total/sum(total), 2)));
 
+pie(as.numeric(x = experiencia_dotnet$percent), labels = paste(experiencia_dotnet$percent, "%", sep=""), border = "white", clockwise = TRUE, col=brewer.pal(7,"Set1"), cex=0.9);
+legend(x =.8 , y=-0.5,  legend=experiencia_dotnet$ExpNET, fill=brewer.pal(7,"Set1"), cex = 0.7, bty = "n");
 
-
-
-png("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\Scripts\\Result\\experiencia_dotnet.png", width = 2048, height = 1024, res = 152);
-pie(as.numeric(x = experiencia_dotnet$percent), labels = paste(experiencia_dotnet$percent, "%", sep=""), border = "white", radius = 0.9, main = "Experiência em .NET", clockwise = TRUE, col=brewer.pal(7,"Set1"), cex=0.9);
-legend("left",legend=experiencia_dotnet$ExpNET, bty = "n", fill=brewer.pal(7,"Set1"), cex=0.9);
-
-dev.off();
 
 

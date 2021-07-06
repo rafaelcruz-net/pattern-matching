@@ -1,4 +1,5 @@
 library(dplyr)
+library(RColorBrewer);
 
 rm(list = ls())
 questions <- read.delim("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\data\\correcao-questionarios.csv", header = TRUE, sep = ";");
@@ -87,8 +88,6 @@ total_acerto_if <- c(total_acerto = sum(question_temp$acerto_IF));
 total_acerto_pm <- c(total_acerto = sum(question_temp$acerto_PM));
 sumarise_acertos <- rbind(total_acerto_if, total_acerto_pm);
 
-png("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\Scripts\\Result\\acerto_if_pm.png", width = 1024, height = 768, res = 92);
-
 # EXPORTA O GRAFICO
 barplot(sumarise_acertos, 
         beside = TRUE, 
@@ -96,9 +95,9 @@ barplot(sumarise_acertos,
         col=brewer.pal(7,"Set1"), 
         names.arg=c("IF/SWTICH","PATTERN MATCHING"), 
         space = 0.2,
-        main = "Total de acertos entre IF & Pattern Matching");
+        );
 
-dev.off();
+
 
 
 # CALCULA OS ERROS
@@ -107,8 +106,6 @@ total_erro_pm <- c(total_erro = sum(question_temp$erro_PM));
 sumarise_erros <- rbind(total_erro_if, total_erro_pm);
 
 
-png("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\Scripts\\Result\\erros_if_pm.png", width = 1024, height = 768, res = 92);
-
 # EXPORTA O GRAFICO
 barplot(sumarise_erros, 
         beside = TRUE, 
@@ -116,7 +113,7 @@ barplot(sumarise_erros,
         col=brewer.pal(7,"Set1"), 
         names.arg=c("IF/SWTICH","PATTERN MATCHING"), 
         space = 0.2,
-        main = "Total de Erros entre IF & Pattern Matching");
+        );
 
-dev.off();
+
 

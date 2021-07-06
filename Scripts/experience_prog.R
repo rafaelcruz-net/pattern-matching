@@ -14,8 +14,6 @@ experiencia_programacao <- questions %>%
 
 
 
-png("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\Scripts\\Result\\experiencia_prog.png", width = 2048, height = 1024, res = 152);
-pie(as.numeric(x = experiencia_programacao$percent), labels = paste(experiencia_programacao$percent, "%", sep=""), border = "white", radius = 0.9, main = "Experiência em Programacão", clockwise = TRUE, col=brewer.pal(7,"Set1"), cex=0.9);
-legend("left",legend=experiencia_programacao$ExpProg, bty = "n", fill=brewer.pal(7,"Set1"), cex=0.9);
+pie(as.numeric(x = experiencia_programacao$percent), labels = paste(experiencia_programacao$percent, "%", sep=""), border = "white", clockwise = TRUE, col=brewer.pal(7,"Set1"), cex=0.9);
+legend(x =.8 , y=-0.7,legend=experiencia_programacao$ExpProg, bty = "n", fill=brewer.pal(7,"Set1"), cex=0.7);
 
-dev.off();

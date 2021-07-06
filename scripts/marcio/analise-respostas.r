@@ -1,11 +1,15 @@
 rm(list = ls());
 library(tidyverse);
-
+library(ggplot2);
+library(gridExtra);
+library(finalfit);
+library(kableExtra);
+setwd("~/Mestrado/tese/pattern-matching")
 
 #
 # Configuracao
 #
-baseDirectory <- "/Users/User/Desktop/Codigos/pattern-matching/data/";
+baseDirectory <- "data/";
 
 
 #
@@ -116,7 +120,7 @@ notaParticipante <- correcao %>%
 #
 notaMediaExpProg <- notaParticipante %>%
   group_by(ExpProg) %>%
-  summarise(Nota = mean(Nota));
+  summarise(Nota = round(mean(Nota),2));
 
 pairwise.wilcox.test(notaParticipante$Nota, notaParticipante$ExpProg, p.adj = "bonf");
 
@@ -126,11 +130,16 @@ pairwise.wilcox.test(notaParticipante$Nota, notaParticipante$ExpProg, p.adj = "b
 #
 notaMediaExpNET <- notaParticipante %>%
   group_by(ExpNET) %>%
-  summarise(Nota = mean(Nota));
+  summarise(Nota = round(mean(Nota),2));
 
 pairwise.wilcox.test(notaParticipante$Nota, notaParticipante$ExpNET, p.adj = "bonf");
 
-
+notaMediaExpNET %>%
+  kbl(col.names = c("Experiência", "Nota"), booktabs = TRUE ,format = 'html' ,table.attr = "style='width:450px;height:450px'") %>%
+  kable_styling(latex_options = "striped", full_width = T) %>%
+  column_spec(1, width = "6cm") %>%
+  kable_classic(full_width = F);
+  
 
 # ============================================================
 #

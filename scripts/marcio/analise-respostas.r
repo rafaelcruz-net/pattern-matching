@@ -88,11 +88,11 @@ correcao <- correcao %>%
 # ============================================================
 
 #
-# - equilibrado, 644 respostas por tipo de resolução.
+# - equilibrado, 632 respostas por tipo de resolução.
 #
-# - desequilibrado, 37 respostas para F1 e F2, 56 para F3 e 31 para F4
+# - desequilibrado, 37 respostas para F1 e F2, 53 para F3 e 31 para F4
 #
-# - equilibrado, 161 respostas por questão.
+# - equilibrado, 158 respostas por questão.
 #
 correcao %>%
   group_by(Tipo) %>%
@@ -125,7 +125,6 @@ ggplot(notaParticipante, aes(Nota)) +
   geom_histogram(binwidth = 1);
 
 
-
 #
 # Caracterizacao: A maioria dos participantes é experiente em programação (39 dos 54 participantes têm 5+ anos de experiência)
 #
@@ -143,11 +142,11 @@ notaParticipante %>%
 
 
 #
-# Juntando o menor grupo (4 pessoas) e recalculando as notas
+# Juntando o menor grupo (3 pessoas) e recalculando as notas
 #
 correcao <- correcao %>% 
-  mutate(ExpNET = if_else(ExpNET == "1-3 anos", "1-5 anos", ExpNET)) %>%
-  mutate(ExpNET = if_else(ExpNET == "3-5 anos", "1-5 anos", ExpNET));
+  mutate(ExpProg = if_else(ExpProg == "1-3 anos", "Até 3 anos", ExpProg)) %>%
+  mutate(ExpProg = if_else(ExpProg == "< 1 ano", "Até 3 anos", ExpProg));
 
 notaParticipante <- correcao %>%
   group_by(Participante, ExpProg, ExpNET) %>%
@@ -208,7 +207,7 @@ notaMediaExpNET %>%
 # ============================================================
 
 #
-# Acertos por tipo - 192 pattern matching, 179 condicionais
+# Acertos por tipo - 543 pattern matching, 543 condicionais
 #
 acertosTipo <- correcao %>%
   group_by(Tipo) %>%
@@ -216,7 +215,7 @@ acertosTipo <- correcao %>%
 
 
 #
-# Acertos por formulario - pattern matching vence em 3 de 4 casos (diferença não significativa)
+# Acertos por formulario - pattern matching vence em 2 de 4 casos (diferença não significativa)
 #
 acertosFormTipo <- correcao %>%
   group_by(Form, Tipo) %>%
@@ -227,13 +226,12 @@ mxAcertosFormTipo <- matrix(as.numeric(as.matrix(acertosFormTipo)[,2:3]), ncol=4
 chisq.test(mxAcertosFormTipo);
 
 
-
 #
-# Acertos por experiência em programação - pattern matching vence em 2 de 3 casos, com 1 empate (sem diferença significativa)
+# Acertos por experiência em programação - pattern matching vence nos 2 de 3 casos com mais experiência (sem diferença significativa)
 #
 acertosExpProgTipo <- correcao %>%
   group_by(ExpProg, Tipo) %>%
-  summarise(Acertos = sum(Acerto)) %>%
+  summarise(Acertos = sum(Acerto), .groups="drop") %>%
   spread(Tipo, Acertos);
 
 mxAcertosExpProgTipo <- matrix(as.numeric(as.matrix(acertosExpProgTipo)[,2:3]), ncol=3, byrow=TRUE);
@@ -241,13 +239,13 @@ chisq.test(mxAcertosExpProgTipo);
 
 
 #
-# Acertos por experiência em .NET - pattern matching vence em 2 de 3 casos, com 1 empate (sem diferença significativa)
+# Acertos por experiência em .NET - pattern matching vence em 1 de 4 casos (vence nos mais experientes, sem diferença significativa)
 #
 acertosExpNETTipo <- correcao %>%
   group_by(ExpNET, Tipo) %>%
   summarise(Acertos = sum(Acerto)) %>%
   spread(Tipo, Acertos);
 
-mxAcertosExpNETTipo <- matrix(as.numeric(as.matrix(acertosExpNETTipo)[,2:3]), ncol=3, byrow=TRUE);
+mxAcertosExpNETTipo <- matrix(as.numeric(as.matrix(acertosExpNETTipo)[,2:3]), ncol=4, byrow=TRUE);
 chisq.test(mxAcertosExpNETTipo);
 

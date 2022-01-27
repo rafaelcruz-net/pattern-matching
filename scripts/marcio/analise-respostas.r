@@ -1,10 +1,15 @@
+cat("\014")
 rm(list = ls());
+
 library(tidyverse);
 library(ggplot2);
 library(gridExtra);
 library(finalfit);
 library(kableExtra);
-setwd("~/Mestrado/tese/pattern-matching")
+
+setwd("/Users/User/Desktop/Codigos/pattern-matching")
+#setwd("~/Mestrado/tese/pattern-matching")
+
 
 #
 # Configuracao
@@ -12,23 +17,66 @@ setwd("~/Mestrado/tese/pattern-matching")
 baseDirectory <- "data/";
 
 
+# ============================================================
 #
-# Carga dos dados
+# CARGA DOS DADOS
+#
+# ============================================================
+
+#
+# Carga das correcoes
+#
+correcaoColSpec <- cols(
+  Participante = col_character(),
+  ExpProg = col_character(),
+  ExpNET = col_character(),
+  Form = col_character(),
+  Q1 = col_double(),
+  Q2 = col_double(),
+  Q3 = col_double(),
+  Q4 = col_double(),
+  Q5 = col_double(),
+  Q6 = col_double(),
+  Q7 = col_double(),
+  Q8 = col_double()
+)
+
+correcao <- read_delim(paste0(baseDirectory, "correcao-questionarios.csv"), delim=";", col_types=correcaoColSpec);
+
+
+#
+# Carga das composicoes dos formularios
+#
+composicaoColSpec <- cols(
+  Form = col_character(),
+  Q1 = col_character(),
+  Q2 = col_character(),
+  Q3 = col_character(),
+  Q4 = col_character(),
+  Q5 = col_character(),
+  Q6 = col_character(),
+  Q7 = col_character(),
+  Q8 = col_character()
+)
+
+composicao <- read_delim(paste0(baseDirectory, "composicao-questionarios.csv"), delim=";", col_types=composicaoColSpec);
+
+
+#
+# Organizacao e recodificacao dos dados
 #
 experiencia <- c("Menos que 1 ano" = "< 1 ano",
                  "Mais que 1 ano e menor que 3 anos" = "1-3 anos",
                  "Mais que 3 anos e menor que 5 anos" = "3-5 anos",
                  "Mais que 5 anos" = "5+ anos")
 
-correcao <- read_delim(paste0(baseDirectory, "correcao-questionarios.csv"), delim=";") %>%
-  mutate(ExpProg = recode(ExpProg, !!!experiencia)) %>%
-  mutate(ExpNET = recode(ExpNET, !!!experiencia)) %>%
-  gather(Questao, Acerto, -Participante, -ExpNET, -ExpProg, -Form);
-
-composicao <- read_delim(paste0(baseDirectory, "composicao-questionarios.csv"), delim=";") %>%
+composicao <- composicao %>%
   gather(Questao, Tipo, -Form);
 
 correcao <- correcao %>%
+  mutate(ExpProg = recode(ExpProg, !!!experiencia)) %>%
+  mutate(ExpNET = recode(ExpNET, !!!experiencia)) %>%
+  gather(Questao, Acerto, -Participante, -ExpNET, -ExpProg, -Form) %>%
   inner_join(composicao, by=c("Form"="Form", "Questao"="Questao"))
 
 
@@ -62,7 +110,7 @@ notaParticipante <- correcao %>%
   summarise(Nota = sum(Acerto));
 
 ggplot(notaParticipante, aes(Nota)) +
-  geom_histogram();
+  geom_histogram(binwidth = 1);
 
 
 
@@ -91,7 +139,7 @@ correcao <- correcao %>%
 
 notaParticipante <- correcao %>%
   group_by(Participante, ExpProg, ExpNET) %>%
-  summarise(Nota = sum(Acerto));
+  summarise(Nota = sum(Acerto), .groups = 'drop');
 
 
 #
@@ -160,7 +208,7 @@ acertosTipo <- correcao %>%
 #
 acertosFormTipo <- correcao %>%
   group_by(Form, Tipo) %>%
-  summarise(Acertos = sum(Acerto)) %>%
+  summarise(Acertos = sum(Acerto), .groups = 'drop') %>%
   spread(Tipo, Acertos);
 
 mxAcertosFormTipo <- matrix(as.numeric(as.matrix(acertosFormTipo)[,2:3]), ncol=4, byrow=TRUE);
@@ -190,3 +238,4 @@ acertosExpNETTipo <- correcao %>%
 
 mxAcertosExpNETTipo <- matrix(as.numeric(as.matrix(acertosExpNETTipo)[,2:3]), ncol=3, byrow=TRUE);
 chisq.test(mxAcertosExpNETTipo);
+

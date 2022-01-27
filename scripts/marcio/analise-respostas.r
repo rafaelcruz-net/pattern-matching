@@ -88,10 +88,22 @@ correcao <- correcao %>%
 # ============================================================
 
 #
-# Questoes por tipo - equilibrado, 216 por questão.
+# - equilibrado, 644 respostas por tipo de resolução.
+#
+# - desequilibrado, 37 respostas para F1 e F2, 56 para F3 e 31 para F4
+#
+# - equilibrado, 161 respostas por questão.
 #
 correcao %>%
   group_by(Tipo) %>%
+  summarise(Acertos = n());
+
+correcao %>%
+  group_by(Form) %>%
+  summarise(Acertos = n() / 8);
+
+correcao %>%
+  group_by(Questao) %>%
   summarise(Acertos = n());
 
 

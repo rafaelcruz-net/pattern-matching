@@ -7,14 +7,14 @@ library(gridExtra);
 library(finalfit);
 library(kableExtra);
 
-setwd("/Users/User/Desktop/Codigos/pattern-matching")
+setwd("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\")
 #setwd("~/Mestrado/tese/pattern-matching")
 
 
 #
 # Configuracao
 #
-baseDirectory <- "data/";
+baseDirectory <- "data\\";
 
 
 # ============================================================

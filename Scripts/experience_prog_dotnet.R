@@ -2,7 +2,7 @@ library(dplyr)
 library(RColorBrewer)
 
 rm(list = ls())
-questions <- read.delim("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\data\\correcao-questionarios.csv", header = TRUE, sep = ";");
+questions <- read.delim("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\data\\final-correcao-questionarios.csv", header = TRUE, sep = ";");
 questions_type <- read.delim("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\data\\composicao-questionarios.csv", header = TRUE, sep = ";");
 
 

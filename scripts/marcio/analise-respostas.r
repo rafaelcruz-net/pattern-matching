@@ -41,7 +41,7 @@ correcaoColSpec <- cols(
   Q8 = col_double()
 )
 
-correcao <- read_delim(paste0(baseDirectory, "correcao-questionarios.csv"), delim=";", col_types=correcaoColSpec);
+correcao <- read_delim(paste0(baseDirectory, "final-correcao-questionarios.csv"), delim=";", col_types=correcaoColSpec);
 
 
 #

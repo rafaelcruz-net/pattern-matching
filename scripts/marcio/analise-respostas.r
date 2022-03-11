@@ -7,7 +7,8 @@ library(gridExtra);
 library(finalfit);
 library(kableExtra);
 
-setwd("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\")
+#setwd("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\")
+setwd("C:\\Users\\User\\Desktop\\Codigos\\pattern-matching\\")
 #setwd("~/Mestrado/tese/pattern-matching")
 
 
@@ -88,23 +89,59 @@ correcao <- correcao %>%
 # ============================================================
 
 #
-# - equilibrado, 632 respostas por tipo de resolução.
+# - equilibrado, 672 respostas por tipo de resolução.
 #
-# - desequilibrado, 37 respostas para F1 e F2, 53 para F3 e 31 para F4
+# - desequilibrado, 40 respostas para F1, 39 para F2, 57 para F3 e 32 para F4
 #
 # - equilibrado, 158 respostas por questão.
 #
 correcao %>%
   group_by(Tipo) %>%
-  summarise(Acertos = n());
+  summarise(Respostas = n());
 
 correcao %>%
   group_by(Form) %>%
-  summarise(Acertos = n() / 8);
+  summarise(Respostas = n() / 8);
 
 correcao %>%
   group_by(Questao) %>%
-  summarise(Acertos = n());
+  summarise(Respostas = n());
+
+
+
+# ============================================================
+#
+# DISTRIBUICAO DOS PARTICIPANTES
+#
+# ============================================================
+
+#
+# Número total de participantes
+#
+correcao %>% 
+  summarize(count = n() / 8)
+
+  
+#
+# Participantes agrupados por experiência em programação: a maioria 
+# dos participantes é experiente em programação
+#
+correcao %>% 
+  group_by(ExpProg) %>% 
+  summarize(count = n() / 8, .groups="keep") %>% 
+  ungroup() %>% 
+  mutate(perc = 100 * count / sum(count))
+
+
+#
+# Participantes agrupados por experiência em programação: boa 
+# distribuição de experiência com C#
+#
+correcao %>% 
+  group_by(ExpNET) %>% 
+  summarize(count = n() / 8, .groups="keep") %>% 
+  ungroup() %>% 
+  mutate(perc = 100 * count / sum(count))
 
 
 
@@ -119,26 +156,19 @@ correcao %>%
 #
 notaParticipante <- correcao %>%
   group_by(Participante, ExpProg, ExpNET) %>%
-  summarise(Nota = sum(Acerto));
+  summarise(Nota = sum(Acerto), .groups="drop");
 
 ggplot(notaParticipante, aes(Nota)) +
-  geom_histogram(binwidth = 1);
+  geom_histogram(binwidth = 1, fill="blue", color="white", size=2) +
+  ylab("Número de participantes") +
+  theme_bw();
 
 
 #
-# Caracterizacao: A maioria dos participantes é experiente em programação (39 dos 54 participantes têm 5+ anos de experiência)
+# Média das notas de todos os participantes
 #
-notaParticipante %>% 
-  group_by(ExpProg) %>% 
-  summarise(n = n());
-
-
-#
-# Caracterizacao: Boa distribuição de experiência com .NET
-#
-notaParticipante %>% 
-  group_by(ExpNET) %>% 
-  summarise(n = n());
+media <- notaParticipante %>% 
+  summarize(mean = mean(Nota), .groups="drop")
 
 
 #
@@ -154,33 +184,15 @@ notaParticipante <- correcao %>%
 
 
 #
-# Dendograma - meio confuso ...
-#
-#nivel <- c("Menos que 1 ano" = 1,
-#           "Mais que 1 ano e menor que 3 anos" = 2,
-#           "Mais que 3 anos e menor que 5 anos" = 3,
-#           "Mais que 5 anos" = 4);
-# 
-#porNivel <- read_delim(paste0(baseDirectory, "correcao-questionarios.csv"), delim=";") %>%
-#      mutate(ExpProg = recode(ExpProg, !!!nivel)) %>%
-#      mutate(ExpNET = recode(ExpNET, !!!nivel)) %>%
-#      select(Participante, ExpNET, ExpProg);
-# 
-#dd <- dist(scale(porNivel[2:3]), method = "euclidean");
-#hc <- hclust(dd);
-#
-#plot(hc);
-#table(porNivel[2:3]);
-
-
-
-#
 # Nota média por nível de experiência de programação - mais junior, nota mais baixa (diferença não significativa)
 #
 notaMediaExpProg <- notaParticipante %>%
   group_by(ExpProg) %>%
-  summarise(Nota = round(mean(Nota),2));
+  summarise(Nota = round(mean(Nota), 2));
 
+kruskal.test(notaParticipante$Nota, notaParticipante$ExpProg)
+
+# precisa de um recode de ExpProg para fator?
 pairwise.wilcox.test(notaParticipante$Nota, notaParticipante$ExpProg, p.adj = "bonf");
 
 
@@ -191,6 +203,9 @@ notaMediaExpNET <- notaParticipante %>%
   group_by(ExpNET) %>%
   summarise(Nota = round(mean(Nota),2));
 
+kruskal.test(notaParticipante$Nota, notaParticipante$ExpNET)
+
+# precisa de um recode de ExpNET para fator?
 pairwise.wilcox.test(notaParticipante$Nota, notaParticipante$ExpNET, p.adj = "bonf");
 
 notaMediaExpNET %>%

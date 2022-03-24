@@ -179,8 +179,19 @@ correcao <- correcao %>%
   mutate(ExpProg = if_else(ExpProg == "< 1 ano", "Até 3 anos", ExpProg));
 
 notaParticipante <- correcao %>%
-  group_by(Participante, ExpProg, ExpNET) %>%
+  group_by(Participante, ExpProg, ExpNET, Form) %>%
   summarise(Nota = sum(Acerto), .groups = 'drop');
+
+
+#
+# Nota média por formulário
+#
+notaFormulario <- notaParticipante %>% 
+  group_by(Form) %>%
+  summarise(NotaMedia = mean(Nota), NotaDesvio = sd(Nota), .groups = 'drop');
+
+kruskal.test(notaParticipante$Nota, notaParticipante$Form)
+
 
 
 #
@@ -188,12 +199,9 @@ notaParticipante <- correcao %>%
 #
 notaMediaExpProg <- notaParticipante %>%
   group_by(ExpProg) %>%
-  summarise(Nota = round(mean(Nota), 2));
+  summarise(NotaMedia = mean(Nota), NotaDesvio = sd(Nota));
 
 kruskal.test(notaParticipante$Nota, notaParticipante$ExpProg)
-
-# precisa de um recode de ExpProg para fator?
-pairwise.wilcox.test(notaParticipante$Nota, notaParticipante$ExpProg, p.adj = "bonf");
 
 
 #
@@ -201,18 +209,20 @@ pairwise.wilcox.test(notaParticipante$Nota, notaParticipante$ExpProg, p.adj = "b
 #
 notaMediaExpNET <- notaParticipante %>%
   group_by(ExpNET) %>%
-  summarise(Nota = round(mean(Nota),2));
+  summarise(NotaMedia = mean(Nota), NotaDesvio = sd(Nota));
 
 kruskal.test(notaParticipante$Nota, notaParticipante$ExpNET)
 
-# precisa de um recode de ExpNET para fator?
-pairwise.wilcox.test(notaParticipante$Nota, notaParticipante$ExpNET, p.adj = "bonf");
 
-notaMediaExpNET %>%
-  kbl(col.names = c("Experiência", "Nota"), booktabs = TRUE ,format = 'html' ,table.attr = "style='width:450px;height:450px'") %>%
-  kable_styling(latex_options = "striped", full_width = T) %>%
-  column_spec(1, width = "6cm") %>%
-  kable_classic(full_width = F);
+
+# precisa de um recode de ExpNET para fator?
+#pairwise.wilcox.test(notaParticipante$Nota, notaParticipante$ExpNET, p.adj = "bonf");
+# 
+# notaMediaExpNET %>%
+#   kbl(col.names = c("Experiência", "Nota"), booktabs = TRUE ,format = 'html' ,table.attr = "style='width:450px;height:450px'") %>%
+#   kable_styling(latex_options = "striped", full_width = T) %>%
+#   column_spec(1, width = "6cm") %>%
+#   kable_classic(full_width = F);
   
 
 # ============================================================
@@ -222,11 +232,30 @@ notaMediaExpNET %>%
 # ============================================================
 
 #
-# Acertos por tipo - 543 pattern matching, 543 condicionais
+# Acertos por tipo
 #
 acertosTipo <- correcao %>%
   group_by(Tipo) %>%
-  summarise(Acertos = sum(Acerto));
+  summarise(Acertos = sum(Acerto), .groups="drop") %>% 
+  mutate(Percentual = 100 * Acertos / 672);
+
+
+#
+# Acertos por tipo e questao
+#
+acertosQuestaoTipo <- correcao %>%
+  group_by(Questao, Tipo) %>%
+  summarise(Acertos = sum(Acerto), Total=n(), .groups="drop") %>% 
+  mutate(Percentual = 100 * Acertos / Total) %>% 
+  pivot_wider(names_from = Tipo, values_from=c(Acertos, Total, Percentual)) %>% 
+  select(Questao, Acertos_I, Total_I, Percentual_I, Acertos_P, Total_P, Percentual_P)
+
+mxAcertosQuestaoTipo <- acertosQuestaoTipo %>% 
+  select(Percentual_I, Percentual_P) %>% 
+  as.matrix() %>% 
+  t()
+
+chisq.test(mxAcertosQuestaoTipo);
 
 
 #

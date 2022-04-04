@@ -263,10 +263,10 @@ chisq.test(mxAcertosQuestaoTipo);
 #
 acertosFormTipo <- correcao %>%
   group_by(Form, Tipo) %>%
-  summarise(Acertos = sum(Acerto), .groups = 'drop') %>%
-  spread(Tipo, Acertos);
+  summarise(Acertos = sum(Acerto), Percentual=100 * sum(Acerto) / n(), .groups = 'drop') %>%
+  pivot_wider(names_from=Tipo, values_from=c(Acertos, Percentual));
 
-mxAcertosFormTipo <- matrix(as.numeric(as.matrix(acertosFormTipo)[,2:3]), ncol=4, byrow=TRUE);
+mxAcertosFormTipo <- matrix(as.numeric(as.matrix(acertosFormTipo %>% select(Form, Acertos_I, Acertos_P))[,2:3]), ncol=4, byrow=TRUE);
 chisq.test(mxAcertosFormTipo);
 
 
@@ -275,10 +275,10 @@ chisq.test(mxAcertosFormTipo);
 #
 acertosExpProgTipo <- correcao %>%
   group_by(ExpProg, Tipo) %>%
-  summarise(Acertos = sum(Acerto), .groups="drop") %>%
-  spread(Tipo, Acertos);
+  summarise(Acertos = sum(Acerto), Percentual=100 * sum(Acerto) / n(), .groups="drop") %>%
+  pivot_wider(names_from=Tipo, values_from=c(Acertos, Percentual));
 
-mxAcertosExpProgTipo <- matrix(as.numeric(as.matrix(acertosExpProgTipo)[,2:3]), ncol=3, byrow=TRUE);
+mxAcertosExpProgTipo <- matrix(as.numeric(as.matrix(acertosExpProgTipo %>% select(ExpProg, Acertos_I, Acertos_P))[,2:3]), ncol=3, byrow=TRUE);
 chisq.test(mxAcertosExpProgTipo);
 
 
@@ -287,9 +287,9 @@ chisq.test(mxAcertosExpProgTipo);
 #
 acertosExpNETTipo <- correcao %>%
   group_by(ExpNET, Tipo) %>%
-  summarise(Acertos = sum(Acerto)) %>%
-  spread(Tipo, Acertos);
+  summarise(Acertos = sum(Acerto), Percentual=100 * sum(Acerto) / n(), .groups="drop") %>%
+  pivot_wider(names_from=Tipo, values_from=c(Acertos, Percentual));
 
-mxAcertosExpNETTipo <- matrix(as.numeric(as.matrix(acertosExpNETTipo)[,2:3]), ncol=4, byrow=TRUE);
+mxAcertosExpNETTipo <- matrix(as.numeric(as.matrix(acertosExpNETTipo %>% select(ExpNET, Acertos_I, Acertos_P))[,2:3]), ncol=4, byrow=TRUE);
 chisq.test(mxAcertosExpNETTipo);
 

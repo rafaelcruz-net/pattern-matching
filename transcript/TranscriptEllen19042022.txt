@@ -1,0 +1,130 @@
+00:00:20.277 --> 00:00:29.047
+Rafael Bento Cruz
+Obrigado pela sua disponibilidade. Seja bem-vindo a pesquisa qualitativa sobre legibilidade de código.
+00:00:29.747 --> 00:00:33.237
+Rafael Bento Cruz
+Essa aqui é uma entrevista gravada, você aceita a sua gravação?
+00:00:33.547 --> 00:00:34.807
+Ellen
+Aceitou Rafael.
+00:00:36.107 --> 00:00:38.947
+Rafael Bento Cruz
+Poderia fornecer seus dados básicos como nome, tempo de experiência, cargo, idade.
+00:00:42.947 --> 00:00:48.317
+Ellen
+Sim, eu sou a Ellen Priscila Borges Oliveira, tenho 29 anos.
+00:00:48.907 --> 00:00:57.947
+Ellen
+É trabalho há 4 anos nessa área de tecnologia. É o meu cargo, é um analista pleno.
+00:00:59.687 --> 00:01:02.157
+Rafael Bento Cruz
+Obrigado.
+00:01:03.047 --> 00:01:07.737
+Rafael Bento Cruz
+Vamos a primeira pergunta, eu vou mostrar uma pergunta sobre um determinado problema de algoritmo.Vou mostrar 2 trechos de código do lado esquerdo e do lado direito. Os trechos são semelhantes. A saída é mesma, só a forma de escrita que é diferente.
+00:01:20.187 --> 00:01:21.527
+Rafael Bento Cruz
+Primeiro trecho de código.
+00:01:22.377 --> 00:01:23.737
+Rafael Bento Cruz
+Segundo trecho de código.
+00:01:26.197 --> 00:01:28.807
+00:01:33.677 --> 00:01:41.417
+Rafael Bento Cruz
+Qual é a saída do código abaixo, um dado que o valor da variável name é Conjured Mana Cake?
+00:02:18.287 --> 00:02:18.857
+Rafael Bento Cruz
+Tá pensando?
+00:02:18.447 --> 00:02:20.177
+Ellen
+To pensando.
+00:03:53.157 --> 00:03:54.767
+Ellen
+Eu só achei que não fosse um recurso.
+00:03:56.427 --> 00:04:04.627
+Ellen
+Ele vai criar uma entidade conjured
+00:04:05.657 --> 00:04:06.107
+Rafael Bento Cruz
+Sim.
+00:04:07.547 --> 00:04:17.777
+Ellen
+Eu estava achando que nossa que confuso, eu estava achando que ele estava retornando sempre a mesma função, que estava sempre chamando a mesma condição, OK?
+00:04:18.727 --> 00:04:23.117
+Rafael Bento Cruz
+Entre esses 2, que trecho de código? Qual que você acha mais legível?
+00:04:24.087 --> 00:04:24.807
+Ellen
+Primeiro.
+00:04:25.857 --> 00:04:27.377
+Rafael Bento Cruz
+Primeiro, lado esquerdo ou à direita.
+00:04:27.697 --> 00:04:28.157
+Ellen
+Esquerdo
+00:04:32.907 --> 00:04:38.117
+Rafael Bento Cruz
+Então o lado esquerdo para você é mais legível, por que você acha isso?
+00:04:41.197 --> 00:04:42.317
+Ellen
+Porque?
+00:04:44.737 --> 00:04:48.727
+Ellen
+Eu tenho mais facilidade com switch case, para mim é mais natural.
+00:04:50.827 --> 00:04:54.297
+Ellen
+E esse tipo de sintaxe aqui embaixo não é algo que eu uso muito.
+00:05:04.167 --> 00:05:07.257
+Rafael Bento Cruz
+Qual a saída do algoritmo abaixo, dado que a propriedade hour da variável time of tool maior que 12.
+00:05:13.277 --> 00:05:14.347
+Rafael Bento Cruz
+Lado esquerdo.
+00:05:14.977 --> 00:05:15.857
+Rafael Bento Cruz
+Lado direito.
+00:05:22.867 --> 00:05:26.217
+Ellen
+Só um minutinho que eu estou no celular tá aí, tem que dar uma maximizada aqui.
+00:08:39.777 --> 00:08:41.977
+Rafael Bento Cruz
+Olha, desculpa, qual é a saída?
+00:08:42.307 --> 00:08:43.597
+Ellen
+TimeBand Daytime
+00:08:45.107 --> 00:08:46.957
+Rafael Bento Cruz
+TimeBand Daytime, né?
+00:08:47.167 --> 00:08:48.117
+Ellen
+Isso.
+00:08:48.887 --> 00:08:54.477
+Rafael Bento Cruz
+Eentre esses 2 trechos, qual que você acha mais elegível?
+00:08:54.917 --> 00:08:56.747
+Ellen
+O primeiro
+00:08:55.327 --> 00:08:58.467
+Rafael Bento Cruz
+O da esquerda, né?
+00:08:57.567 --> 00:08:57.997
+Ellen
+Hurum.
+00:08:58.747 --> 00:08:59.147
+Ellen
+Sim.
+00:09:03.057 --> 00:09:06.437
+Ellen
+Em questão de qualidade, mas porque é.
+00:09:07.367 --> 00:09:13.857
+Ellen
+são as primeiras coisas que a gente aprende, então é mais natural reconhecer esse comando do que o da direita.
+00:09:16.197 --> 00:09:20.157
+Rafael Bento Cruz
+Entendi. Então, tá é tão bom, obrigado.
+00:09:20.997 --> 00:09:27.297
+Rafael Bento Cruz
+Muito obrigado pela sua disponibilidade.
+00:09:27.507 --> 00:09:28.357
+Ellen
+Obrigado, eu.

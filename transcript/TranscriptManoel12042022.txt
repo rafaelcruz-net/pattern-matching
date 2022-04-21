@@ -1,0 +1,108 @@
+00:00:12.812 --> 00:00:15.462
+Rafael Bento Cruz
+Vou começar aqui, está bom?
+00:00:16.002 --> 00:00:16.532
+Manoel Victor Caxias Fernandes
+Beleza.
+00:00:17.452 --> 00:00:23.942
+Rafael Bento Cruz
+É obrigado por participar da pesquisa sobre legibilidade de código, obrigado pela sua disponibilidade.
+00:00:24.892 --> 00:00:28.942
+Rafael Bento Cruz
+Essa é uma entrevista gravada, você aceita a gravação dessa entrevista?
+00:00:29.392 --> 00:00:29.862
+Manoel Victor Caxias Fernandes
+Sim.
+00:00:32.112 --> 00:00:36.952
+Rafael Bento Cruz
+Você poderia fornecer seu nome, cargo, tempo de experiência e sua idade?
+00:00:38.032 --> 00:00:40.902
+Manoel Victor Caxias Fernandes
+Sim, é meu nome é Manoel Vitorino Caxias Fernandes.
+00:00:42.172 --> 00:00:45.082
+Manoel Victor Caxias Fernandes
+Eu tenho 32 anos.
+00:00:46.182 --> 00:00:49.592
+Manoel Victor Caxias Fernandes
+Trabalho com desenvolvimento há 13 anos, mais ou menos.
+00:00:53.742 --> 00:00:56.012
+Manoel Victor Caxias Fernandes
+Hoje eu tenho um cargo de analista de sistema sênior.
+00:00:58.632 --> 00:01:01.672
+Rafael Bento Cruz
+Vamos começar com a primeira pergunta, tá bom?
+00:01:04.402 --> 00:01:08.992
+Rafael Bento Cruz
+Eu vou mostrar dois trecho de código do lado esquerdo e do lado direito, está bom.
+00:01:09.012 --> 00:01:09.802
+Manoel Victor Caxias Fernandes
+Certo?
+00:01:12.142 --> 00:01:17.572
+Rafael Bento Cruz
+A saída do código é exatamente igual, só muda a forma da escrita do código tá bom.
+00:01:18.832 --> 00:01:26.982
+Rafael Bento Cruz
+Pergunta um, qual a saída do algoritmo abaixo, dado que o valor da variável name é conjured mane cake?
+00:01:28.752 --> 00:01:30.272
+Rafael Bento Cruz
+Primeiro trecho de código.
+00:01:32.062 --> 00:01:33.442
+Rafael Bento Cruz
+Segundo o trecho de código.
+00:01:51.882 --> 00:01:54.002
+Manoel Victor Caxias Fernandes
+Ele vai dar uma saída do conjured mane cake
+00:02:24.962 --> 00:02:27.912
+Rafael Bento Cruz
+É dentro desses 2 trechos de código.
+00:02:28.772 --> 00:02:30.082
+Rafael Bento Cruz
+Qual que você acha mais legível?
+00:02:31.102 --> 00:02:33.372
+Rafael Bento Cruz
+O da esquerda ou da direita.
+00:02:36.682 --> 00:02:38.562
+Manoel Victor Caxias Fernandes
+O da direita, usando o function.
+00:02:41.432 --> 00:02:42.662
+Rafael Bento Cruz
+E por que você acha isso?
+00:02:44.082 --> 00:02:48.442
+Manoel Victor Caxias Fernandes
+Eu não sei, Eu estou muito acostumado a usar o function arrow hoje em dia. Eu conheço outro também.
+00:02:49.652 --> 00:02:54.492
+Manoel Victor Caxias Fernandes
+Eu acho, já trabalhei muito com outro, mas ultimamente estou usando muito forte. Eu acho mais fácil de ler.
+00:02:55.712 --> 00:02:59.662
+Manoel Victor Caxias Fernandes
+Eu vejo a opção e o retorno com a function arrow.
+00:03:01.162 --> 00:03:02.432
+Rafael Bento Cruz
+A beleza boa.
+00:03:03.692 --> 00:03:05.422
+Rafael Bento Cruz
+Vamos para segunda pergunta, tá?
+00:03:09.642 --> 00:03:16.962
+Rafael Bento Cruz
+Qual é a saída do algoritmo abaixo, dado que a propriedade hour da variável time of toll maior que 12?
+00:03:18.042 --> 00:03:21.492
+Rafael Bento Cruz
+Primeiro trecho de código, segundo trecho de código.
+00:03:40.902 --> 00:03:45.952
+Manoel Victor Caxias Fernandes
+Ele vai retornar um day time, que deve ser tipo TimeBand.
+00:04:06.042 --> 00:04:08.792
+Rafael Bento Cruz
+Dentre esses 2 códigos que você acha que é o mais legível.
+00:04:18.612 --> 00:04:21.812
+Manoel Victor Caxias Fernandes
+Parece que o da esquerda. Eu acho que eu falo das opções serem números, então ficou um pouco estranho para mim comparado com o outro.
+00:04:34.602 --> 00:04:35.602
+Manoel Victor Caxias Fernandes
+Eu prefiro da esquerda.
+00:04:40.062 --> 00:04:43.802
+Rafael Bento Cruz
+Tá bom? Muito obrigado pela sua participação. Vou finalizar por aqui.
+00:04:44.602 --> 00:04:45.642
+Manoel Victor Caxias Fernandes
+Tá certo, obrigado.

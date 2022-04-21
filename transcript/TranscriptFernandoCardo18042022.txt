@@ -1,0 +1,82 @@
+00:00:17.910 --> 00:00:21.260
+Rafael Bento Cruz
+É obrigado por participar da entrevista de legibilidade de código. Essa é uma entrevista gravada. Você aceita a gravação?
+00:00:32.130 --> 00:00:32.800
+Speaker 1
+Aceito.
+00:00:34.020 --> 00:00:38.860
+Rafael Bento Cruz
+Poderia fornecer os seus dados como nome, tempo de experiência, carro, idade.
+00:00:39.470 --> 00:00:49.080
+Speaker 1
+Claro, eu sou Fernando cardo, tenho 37 anos, tenho 16 anos de experiência, sou coordenador de engenharia de software.
+00:00:55.210 --> 00:01:08.840
+Rafael Bento Cruz
+Vou mostrar 2 trechos de código, esses trechos de código, a saída é igual, porém, a escrita a maneira que foi escrito os trechos são diferente.
+00:01:10.770 --> 00:01:12.440
+Rafael Bento Cruz
+Qual é a saída do algoritmo dado que o valor da variável name é Conjured Mana Cake.
+00:01:19.470 --> 00:01:31.620
+Rafael Bento Cruz
+O primeiro trecho de código do lado esquerdo e o segundo do lado direito, lembrando com a saída é igual.
+00:01:33.930 --> 00:01:35.940
+Speaker 1
+Olhe, vai fazer um Suite que vai retornar um objeto conjured.
+00:01:54.010 --> 00:01:54.470
+Rafael Bento Cruz
+Boa.
+00:01:55.130 --> 00:01:58.000
+Rafael Bento Cruz
+Dentre esses 2 trechos, qual que você acha mais legível?
+00:02:01.350 --> 00:02:02.770
+Rafael Bento Cruz
+Da esquerda ou da direita.
+00:02:11.820 --> 00:02:14.930
+Speaker 1
+Da esquerda, mas é porque por hábito.
+00:02:17.950 --> 00:02:19.900
+Speaker 1
+É uma questão mais de de gosto.
+00:02:20.510 --> 00:02:27.030
+Speaker 1
+Eu entendo que a opção da direita é é uma visão mais Moderna, et cetera, mas eu historicamente, tenho trabalhado mais no formato da esquerda, então pra mim acaba sendo mais legível da esquerda.
+00:02:35.920 --> 00:02:38.190
+Rafael Bento Cruz
+Show, vou passar para que para segunda pergunta.
+00:02:39.560 --> 00:02:47.000
+Rafael Bento Cruz
+Pergunta 2, qual é a saída do algoritmo abaixo, data que é propriedade hour da variável time of toll maior que 12.
+00:02:48.130 --> 00:02:50.450
+Rafael Bento Cruz
+Trecho da esquerda, trecho da direita.
+00:03:14.800 --> 00:03:22.280
+Speaker 1
+Vai retornar um Timeband, day time nesse caso da direita, fica bem mais fácil de ler.
+00:03:24.640 --> 00:03:29.250
+Rafael Bento Cruz
+Bom, então é você acha que do lado direito seria mais legível?
+00:03:24.730 --> 00:03:25.440
+Speaker 1
+Com certeza.
+00:03:31.530 --> 00:03:33.010
+Rafael Bento Cruz
+Por que você acha isso?
+00:03:35.430 --> 00:03:37.150
+Speaker 1
+Cara, porque.
+00:03:37.910 --> 00:03:46.520
+Speaker 1
+Use, ifs aninhados. Putz, cara, é. É muito difícil de de ler. Ele aumenta a complexidade assim. Eu não tenho embasamento científico para dizer, mas me parece é, eu tenho que voltar várias vezes pra ter certeza que ainda mais quando tem uma condição do plano primeiro, por exemplo.
+00:03:58.580 --> 00:04:19.530
+Speaker 1
+Para ter certeza que eu, que eu nunca EEE tem a questão da ordem também, ele cai, ele pode cair em várias, mas tem a questão da sequência. Me pareceu muito fácil de ler. A segunda à opção, porque você tirou toda a complexidade é basicamente estavam as condições descritas, né? E ainda tava de forma alinhada, né?
+00:04:20.150 --> 00:04:26.590
+Speaker 1
+Você ident ou de uma forma é fácil, de fácil de ler. Então pra mim ficou mais evidente.
+00:04:27.900 --> 00:04:30.160
+Rafael Bento Cruz
+Tá bom, então o dá direita, seria o mais legível.
+00:04:32.150 --> 00:04:39.270
+Rafael Bento Cruz
+Muito obrigado pela sua participação, vou finalizar aqui a nossa entrevista. 
+Obrigado pela sua disponibilidade.

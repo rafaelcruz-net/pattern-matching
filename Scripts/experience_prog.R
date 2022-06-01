@@ -12,8 +12,6 @@ experiencia_programacao <- questions %>%
   mutate(percent = paste0(round(100*total/sum(total), 2)));
 
 
-
-
-pie(as.numeric(x = experiencia_programacao$percent), labels = paste(experiencia_programacao$percent, "%", sep=""), border = "white", clockwise = TRUE, col=brewer.pal(7,"Set1"), cex=0.9);
-legend(x =.8 , y=-0.7,legend=experiencia_programacao$ExpProg, bty = "n", fill=brewer.pal(7,"Set1"), cex=0.7);
+pie(as.numeric(x = experiencia_programacao$percent), labels = paste(experiencia_programacao$percent, "%", sep=""), border = "white", clockwise = TRUE, col=brewer.pal(7,"Set1"), cex=0.7);
+legend(x =.8 , y=1.5,  legend=experiencia_programacao$ExpProg, fill=brewer.pal(7,"Set1"), bty = "n");
 

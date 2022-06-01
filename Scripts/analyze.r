@@ -93,8 +93,8 @@ barplot(sumarise_acertos,
         beside = TRUE, 
         ylab= "Total", 
         col=brewer.pal(7,"Set1"), 
-        names.arg=c("IF/SWTICH","PATTERN MATCHING"), 
-        space = 0.2,
+        names.arg=c("CC","PM"), 
+        space = 0.1,
         );
 
 
@@ -111,7 +111,7 @@ barplot(sumarise_erros,
         beside = TRUE, 
         ylab= "Total", 
         col=brewer.pal(7,"Set1"), 
-        names.arg=c("IF/SWTICH","PATTERN MATCHING"), 
+        names.arg=c("CC","PM"), 
         space = 0.2,
         );
 

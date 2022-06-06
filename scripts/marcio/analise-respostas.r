@@ -7,8 +7,8 @@ library(gridExtra);
 library(finalfit);
 library(kableExtra);
 
-#setwd("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\")
-setwd("C:\\Users\\User\\Desktop\\Codigos\\pattern-matching\\")
+setwd("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\")
+#setwd("C:\\Users\\User\\Desktop\\Codigos\\pattern-matching\\")
 #setwd("~/Mestrado/tese/pattern-matching")
 
 

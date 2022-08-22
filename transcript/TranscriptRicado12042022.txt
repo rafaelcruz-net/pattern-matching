@@ -1,0 +1,114 @@
+00:00:27.992 --> 00:00:36.722
+Rafael Bento Cruz
+Obrigado pela sua disponibilidade de participar sobre legibilidade de código. Essa é uma entrevista gravada. Você aceita gravação?
+00:00:37.082 --> 00:00:37.482
+Ricardo (Convidado)
+Sim.
+00:00:38.492 --> 00:00:42.782
+Rafael Bento Cruz
+Poderia fornecer seu nome, idade, tempo de experiência, cargo.
+00:00:43.712 --> 00:00:45.892
+Ricardo (Convidado)
+É meu nome é Ricardo Cortez Luz.
+00:00:46.842 --> 00:00:50.422
+Ricardo (Convidado)
+É assim o trabalho já acontecimento, já tenho.
+00:00:54.882 --> 00:01:00.952
+Ricardo (Convidado)
+E cargo atual analista de sistemas, senhor.
+00:01:07.792 --> 00:01:21.052
+Rafael Bento Cruz
+Então, começando aqui a nossa entrevista, eu vou fazer a primeira pergunta, eu vou mostrar 2 trechos de código, a saída é exatamente igual, porém a maneira da escrita do código é diferente.
+00:01:21.652 --> 00:01:25.292
+Rafael Bento Cruz
+Tá? Então, primeiro trecho de código do lado esquerdo.
+00:01:27.662 --> 00:01:28.762
+Rafael Bento Cruz
+E do lado direito?
+00:01:30.392 --> 00:01:37.072
+Rafael Bento Cruz
+Qual é a saída do algoritmo abaixo, dado que o valor da variável name é conjured mana cake.
+00:03:56.612 --> 00:03:58.452
+Ricardo (Convidado)
+Quanto menos linhas, né?
+00:04:07.302 --> 00:04:09.822
+Rafael Bento Cruz
+Segundo do lado do lado direito, né?
+00:04:13.952 --> 00:04:15.382
+Rafael Bento Cruz
+Tá, e por que você acha isso?
+00:04:21.112 --> 00:04:24.092
+Ricardo (Convidado)
+Descrever menos, né? É.
+00:04:25.482 --> 00:04:32.002
+Ricardo (Convidado)
+E que você tem menos código.
+00:04:33.392 --> 00:04:35.692
+Ricardo (Convidado)
+Ao lado ali da condição, né?
+00:04:52.902 --> 00:04:53.422
+Rafael Bento Cruz
+Está bom?
+00:04:53.742 --> 00:04:54.122
+Ricardo (Convidado)
+Ok?
+00:04:56.532 --> 00:05:07.742
+Rafael Bento Cruz
+É, qual é a saída do algoritmo abaixo, dado que a propriedade hour da variável time of toll maior que 12.
+00:05:08.922 --> 00:05:10.542
+Rafael Bento Cruz
+Primeiro trecho de código.
+00:05:11.222 --> 00:05:12.732
+Rafael Bento Cruz
+Segundo trecho de código.
+00:05:31.282 --> 00:05:34.742
+Ricardo (Convidado)
+Timeband Daytime.
+00:05:40.252 --> 00:05:40.942
+Rafael Bento Cruz
+Beleza.
+00:05:41.572 --> 00:05:44.722
+Rafael Bento Cruz
+Esses 2 trechos de código qual você acha mais legível.
+00:05:54.842 --> 00:05:56.712
+Ricardo (Convidado)
+Seria também o segundo trecho.
+00:05:57.772 --> 00:06:03.152
+Ricardo (Convidado)
+Apesar que você é vendo comparações numéricas, né? Frente, parece que também dá uma.
+00:06:04.432 --> 00:06:06.012
+Ricardo (Convidado)
+Pode dar alguma confusão.
+00:06:32.492 --> 00:06:36.472
+Rafael Bento Cruz
+Tá? Beleza, então seria do lado direito para você, seria mais de legivel.
+00:06:36.712 --> 00:06:37.692
+Ricardo (Convidado)
+É.
+00:06:38.432 --> 00:06:41.122
+Rafael Bento Cruz
+E por que que seria? Por que você acha isso?
+00:06:43.242 --> 00:06:50.032
+Ricardo (Convidado)
+É essa questão de redução de código, né? 
+00:06:53.282 --> 00:06:57.752
+Ricardo (Convidado)
+É um paradigma diferente.
+00:06:58.902 --> 00:07:00.112
+Ricardo (Convidado)
+Acho interessante.
+00:06:58.982 --> 00:06:59.462
+Rafael Bento Cruz
+Boa.
+00:07:00.812 --> 00:07:01.502
+Rafael Bento Cruz
+Entendi.
+00:07:02.472 --> 00:07:09.952
+Rafael Bento Cruz
+Legal, então a gente finaliza por aqui essa pesquisa aqui sobre visibilidade, código. Agradeço a sua disponibilidade.
+00:07:10.162 --> 00:07:10.712
+Ricardo (Convidado)
+Obrigado.
+00:07:11.122 --> 00:07:13.152
+Rafael Bento Cruz
+Valeu, vou parar aqui. A gravação está.

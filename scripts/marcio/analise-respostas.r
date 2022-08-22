@@ -7,8 +7,8 @@ library(gridExtra);
 library(finalfit);
 library(kableExtra);
 
-setwd("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\")
-#setwd("C:\\Users\\User\\Desktop\\Codigos\\pattern-matching\\")
+#setwd("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\")
+setwd("C:\\Users\\User\\Desktop\\Codigos\\pattern-matching\\")
 #setwd("~/Mestrado/tese/pattern-matching")
 
 
@@ -42,13 +42,13 @@ correcaoColSpec <- cols(
   Q8 = col_double()
 )
 
-correcao <- read_delim(paste0(baseDirectory, "final-correcao-questionarios.csv"), delim=";", col_types=correcaoColSpec);
+correcao <- read_delim(paste0(baseDirectory, "correcao-questionarios.csv"), delim=";", col_types=correcaoColSpec);
 
 
 #
-# Carga das composicoes dos formularios
+# Carga dos tratamentos dos questionarios
 #
-composicaoColSpec <- cols(
+tratamentoColSpec <- cols(
   Form = col_character(),
   Q1 = col_character(),
   Q2 = col_character(),
@@ -60,25 +60,68 @@ composicaoColSpec <- cols(
   Q8 = col_character()
 )
 
-composicao <- read_delim(paste0(baseDirectory, "composicao-questionarios.csv"), delim=";", col_types=composicaoColSpec);
+tratamento <- read_delim(paste0(baseDirectory, "tratamento-questionarios.csv"), delim=";", col_types=tratamentoColSpec);
 
 
 #
-# Organizacao e recodificacao dos dados
+# Carga das questoes utilizadas nos questionarios
+#
+questaoColSpec <- cols(
+  Form = col_character(),
+  Q1 = col_character(),
+  Q2 = col_character(),
+  Q3 = col_character(),
+  Q4 = col_character(),
+  Q5 = col_character(),
+  Q6 = col_character(),
+  Q7 = col_character(),
+  Q8 = col_character()
+)
+
+questao <- read_delim(paste0(baseDirectory, "questao-questionarios.csv"), delim=";", col_types=questaoColSpec);
+
+
+#
+# Carga do genero dos participantes
+#
+generoColSpec <- cols(
+  Participante = col_character(),
+  ExpProg = col_character(),
+  ExpNET = col_character(),
+  Form = col_character(),
+  Genero = col_character()
+)
+
+genero_participantes <- read_delim(paste0(baseDirectory, "participantes-por-genero.csv"), delim=";", col_types=generoColSpec);
+
+
+#
+# Recodificacao da experiencia dos participantes
 #
 experiencia <- c("Menos que 1 ano" = "< 1 ano",
                  "Mais que 1 ano e menor que 3 anos" = "1-3 anos",
                  "Mais que 3 anos e menor que 5 anos" = "3-5 anos",
                  "Mais que 5 anos" = "5+ anos")
 
-composicao <- composicao %>%
-  gather(Questao, Tipo, -Form);
-
 correcao <- correcao %>%
   mutate(ExpProg = recode(ExpProg, !!!experiencia)) %>%
-  mutate(ExpNET = recode(ExpNET, !!!experiencia)) %>%
-  gather(Questao, Acerto, -Participante, -ExpNET, -ExpProg, -Form) %>%
-  inner_join(composicao, by=c("Form"="Form", "Questao"="Questao"))
+  mutate(ExpNET = recode(ExpNET, !!!experiencia))
+
+
+#
+# Reune todos os dados em uma unica tabela
+#
+tratamento <- tratamento %>%
+  gather(OrdemQuestao, Tipo, -Form);
+
+questao <- questao %>%
+  gather(OrdemQuestao, Questao, -Form)
+
+correcao <- correcao %>%
+  gather(OrdemQuestao, Acerto, -Participante, -ExpNET, -ExpProg, -Form) %>%
+  inner_join(tratamento, by=c("Form"="Form", "OrdemQuestao"="OrdemQuestao")) %>%
+  inner_join(questao, by=c("Form"="Form", "OrdemQuestao"="OrdemQuestao")) %>% 
+  select(Participante, ExpProg, ExpNET, Form, Questao, Tipo, Acerto)
 
 
 
@@ -116,7 +159,7 @@ correcao %>%
 # ============================================================
 
 #
-# Número total de participantes
+# Número total de participantes - 168
 #
 correcao %>% 
   summarize(count = n() / 8)
@@ -144,6 +187,16 @@ correcao %>%
   mutate(perc = 100 * count / sum(count))
 
 
+#
+# Participantes por genero: baixa representatividade feminina
+#
+genero_participantes %>% 
+  group_by(Genero) %>% 
+  summarize(count = n(), .groups="keep") %>% 
+  ungroup() %>% 
+  mutate(perc = 100 * count / sum(count))
+
+
 
 # ============================================================
 #
@@ -152,35 +205,38 @@ correcao %>%
 # ============================================================
 
 #
+# Reune os grupos de menor experiencia em programacao no geral
+#
+correcao <- correcao %>%
+  mutate(ExpProg = if_else(ExpProg == "1-3 anos", "Até 3 anos", ExpProg)) %>%
+  mutate(ExpProg = if_else(ExpProg == "< 1 ano", "Até 3 anos", ExpProg));
+
+
+#
 # Nota por participante - maior parte entre 6 e 8
 #
 notaParticipante <- correcao %>%
-  group_by(Participante, ExpProg, ExpNET) %>%
+  group_by(Participante, ExpProg, ExpNET, Form) %>%
   summarise(Nota = sum(Acerto), .groups="drop");
 
-ggplot(notaParticipante, aes(Nota)) +
+
+#
+# Grafico de numero de participantes por nota
+#
+distribuicao_notas <- ggplot(notaParticipante, aes(Nota)) +
   geom_histogram(binwidth = 1, fill="blue", color="white", size=2) +
-  ylab("Número de participantes") +
-  theme_bw();
+  ylab("Number of subjects") +
+  xlab("Subject score") +
+  theme_bw()
+
+ggsave(filename="subject-score-distribution.pdf", plot=distribuicao_notas, width=20, height=9, units="cm", device="pdf");
 
 
 #
 # Média das notas de todos os participantes
 #
-media <- notaParticipante %>% 
+notaParticipante %>% 
   summarize(mean = mean(Nota), .groups="drop")
-
-
-#
-# Juntando o menor grupo (3 pessoas) e recalculando as notas
-#
-correcao <- correcao %>% 
-  mutate(ExpProg = if_else(ExpProg == "1-3 anos", "Até 3 anos", ExpProg)) %>%
-  mutate(ExpProg = if_else(ExpProg == "< 1 ano", "Até 3 anos", ExpProg));
-
-notaParticipante <- correcao %>%
-  group_by(Participante, ExpProg, ExpNET, Form) %>%
-  summarise(Nota = sum(Acerto), .groups = 'drop');
 
 
 #
@@ -213,16 +269,6 @@ notaMediaExpNET <- notaParticipante %>%
 
 kruskal.test(notaParticipante$Nota, notaParticipante$ExpNET)
 
-
-
-# precisa de um recode de ExpNET para fator?
-#pairwise.wilcox.test(notaParticipante$Nota, notaParticipante$ExpNET, p.adj = "bonf");
-# 
-# notaMediaExpNET %>%
-#   kbl(col.names = c("Experiência", "Nota"), booktabs = TRUE ,format = 'html' ,table.attr = "style='width:450px;height:450px'") %>%
-#   kable_styling(latex_options = "striped", full_width = T) %>%
-#   column_spec(1, width = "6cm") %>%
-#   kable_classic(full_width = F);
   
 
 # ============================================================
@@ -255,7 +301,21 @@ mxAcertosQuestaoTipo <- acertosQuestaoTipo %>%
   as.matrix() %>% 
   t()
 
-chisq.test(mxAcertosQuestaoTipo);
+chisq.test(mxAcertosQuestaoTipo[,1:8]);
+
+maiores_diferencas_pm <- acertosQuestaoTipo %>% 
+  mutate(diff = Percentual_P - Percentual_I) %>% 
+  filter(!is.na(diff)) %>% 
+  select(Questao, diff) %>% 
+  arrange(-diff) %>% 
+  top_n(3)
+
+maiores_diferencas_cc <- acertosQuestaoTipo %>% 
+  mutate(diff = Percentual_I - Percentual_P) %>% 
+  filter(!is.na(diff)) %>% 
+  select(Questao, diff) %>% 
+  arrange(-diff) %>% 
+  top_n(3)
 
 
 #

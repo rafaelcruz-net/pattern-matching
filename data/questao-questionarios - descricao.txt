@@ -1,0 +1,39 @@
+Formulário 1:
+Q01 - Qual é a saída do algoritmo abaixo, dado que o valor da variável name é "Conjured Mana Cake"?
+Q02 - Qual é a saída do algoritmo abaixo, dado que o tipo da variável item é "Retangulo"?
+Q03 - O que será escrito no Console, dado que a cor escolhida é "Blue"?
+Q04 - Qual é a saída do algoritmo abaixo, dado que a variável "Bank" tem o Status é "Closed"?   
+Q05 - Qual é a saída do algoritmo abaixo, dado que o valor de entrada é "AWL"?      
+Q06 - Qual é a saída do algoritmo abaixo, dado que o valor de entrada é "Friday"?   
+Q07 - Qual é a saída do algoritmo abaixo, dado que a  propriedade Hour da variável timeOfToll maior que "12"?   
+Q08 - Qual é a saída do algoritmo abaixo, dado que a  variável Shape é do tipo Circle?
+ 
+Formulário 2:
+Q01 - Qual é a saída do algoritmo abaixo, dado que o valor da variável name é "Conjured Mana Cake"?
+Q02 - Qual é a saída do algoritmo abaixo, dado que o tipo da variável item é "Retangulo"?       
+Q03 - O que será escrito no Console, dado que a cor escolhida é "Blue"?
+Q04 - Qual é a saída do algoritmo abaixo, dado que a variável "Bank" tem o Status é "Closed"?   
+Q05 - Qual é a saída do algoritmo abaixo, dado que o valor de entrada é "AWL"?
+Q06 - Qual é a saída do algoritmo abaixo, dado que o valor de entrada é "Friday"?
+Q07 - Qual é a saída do algoritmo abaixo, dado que a  propriedade Hour da variável timeOfToll maior que "12"?
+Q08 - Qual é a saída do algoritmo abaixo, dado que a  variável Shape é do tipo Circle?
+ 
+Formulário 3:
+Q03 - O que será escrito no Console, dado que a cor escolhida é "Blue"?
+Q04 - Qual é a saída do algoritmo abaixo, dado que a variável "Bank" tem o Status é "Closed"?   
+Q01 - Qual é a saída do algoritmo abaixo, dado que o valor da variável name é "Conjured Mana Cake"?
+Q02 - Qual é a saída do algoritmo abaixo, dado que o tipo da variável item é "Retangulo"?       
+Q05 - Qual é a saída do algoritmo abaixo, dado que o valor de entrada é "AWL"?
+Q07 - Qual é a saída do algoritmo abaixo, dado que a  propriedade Hour da variável timeOfToll maior que "12"?   
+Q09 - Qual é a saída do algoritmo abaixo, os valores das variáveis: current = Closed e transition = Open?       
+Q10 - Qual é a saída do algoritmo abaixo, dado que a variável hero tem o valor de 9000?          
+ 
+Formulário 4:
+Q02 - Qual é a saída do algoritmo abaixo, dado que o tipo da variável item é "Retangulo"?       
+Q04 - Qual é a saída do algoritmo abaixo, dado que a variável "Bank" tem o Status é "Closed"?   
+Q01 - Qual é a saída do algoritmo abaixo, dado que o valor da variável name é "Conjured Mana Cake"?
+Q03 - O que será escrito no Console, dado que a cor escolhida é "Blue"?
+Q06 - Qual é a saída do algoritmo abaixo, dado que o valor de entrada é "Friday?
+Q05 - Qual é a saída do algoritmo abaixo, dado que o valor de entrada é "AWL"?
+Q08 - Qual é a saída do algoritmo abaixo, dado que a  variável Shape é do tipo Circle?
+Q07 - Qual é a saída do algoritmo abaixo, dado que a  propriedade Hour da variável timeOfToll maior que "12"?

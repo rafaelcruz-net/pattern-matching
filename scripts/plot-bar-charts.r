@@ -1,9 +1,14 @@
+cat("\014")
+rm(list = ls())
+
 library(dplyr)
 library(RColorBrewer);
 
-rm(list = ls())
-questions <- read.delim("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\data\\final-correcao-questionarios.csv", header = TRUE, sep = ";");
-questions_type <- read.delim("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\data\\composicao-questionarios.csv", header = TRUE, sep = ";");
+setwd("C:\\Users\\User\\Desktop\\Codigos\\pattern-matching\\")
+
+# Carrega os dados
+questions <- read.delim("data\\correcao-questionarios.csv", header = TRUE, sep = ";");
+questions_type <- read.delim("data\\tratamento-questionarios.csv", header = TRUE, sep = ";");
 
 
 # total de acertos e percentual
@@ -21,8 +26,6 @@ question_temp$erro_IF <- 0;
 question_temp$percentual_erro_if <- 0;
 question_temp$erro_PM <- 0;
 question_temp$percentual_erro_pm <- 0;
-
-
 
 # CALCULA a QUANTIDADE DE ERRO E ACERTOS POR IF E PM
 for (row in 1:nrow(question_temp)) {
@@ -82,38 +85,21 @@ for (row in 1:nrow(question_temp)) {
     question_temp[row, "percentual_erro_pm"] <- round(100 * (erro_pm / 8), 2);
 }
 
-
 # CALCULA O TOTAL DE ACERTOS E ERROS GERAL
 total_acerto_if <- c(total_acerto = sum(question_temp$acerto_IF));
 total_acerto_pm <- c(total_acerto = sum(question_temp$acerto_PM));
 sumarise_acertos <- rbind(total_acerto_if, total_acerto_pm);
 
 # EXPORTA O GRAFICO
-barplot(sumarise_acertos, 
-        beside = TRUE, 
-        ylab= "Total", 
-        col=brewer.pal(7,"Set1"), 
-        names.arg=c("CC","PM"), 
-        space = 0.1,
-        );
-
-
-
+barplot(sumarise_acertos, beside = TRUE, ylab= "Total", col=brewer.pal(7,"Set1"), names.arg=c("CC","PM"), space = 0.1);
 
 # CALCULA OS ERROS
 total_erro_if <- c(total_erro = sum(question_temp$erro_IF));
 total_erro_pm <- c(total_erro = sum(question_temp$erro_PM));
 sumarise_erros <- rbind(total_erro_if, total_erro_pm);
 
-
 # EXPORTA O GRAFICO
-barplot(sumarise_erros, 
-        beside = TRUE, 
-        ylab= "Total", 
-        col=brewer.pal(7,"Set1"), 
-        names.arg=c("CC","PM"), 
-        space = 0.2,
-        );
+barplot(sumarise_erros, beside = TRUE, ylab= "Total", col=brewer.pal(7,"Set1"), names.arg=c("CC","PM"), space = 0.2);
 
 
 

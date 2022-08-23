@@ -1,0 +1,298 @@
+====================================
+
+FORM QUESTIONS
+
+====================================
+
+Question #01: What is the output of the algorithm below given that name is "Conjured Mana Cake"?
+
+	public Item CreateItem(string name, int sellIn, int quality)
+	{
+		switch (name)
+		{
+			case "Aged Brie":
+			   return new AgedBrie(name, sellIn, quality);
+			case "Backstage passes to a TAFKAL80ETC concert":
+			   return new BackstagePasses(name, sellIn, quality);
+			case "Sulfuras, Hand of Ragnaros":
+			   return new Sulfuras(name, sellIn, quality);
+			case "Conjured Mana Cake":
+			   return new Conjured(name, sellIn, quality);
+			default:
+			   return new StandardItem(name, sellIn, quality);
+		}
+	}
+
+	public Item CreateItem(string name, int sellIn, int quality)
+	{
+		switch (name)
+		{
+			case "Aged Brie":
+			   return new AgedBrie(name, sellIn, quality);
+			case "Backstage passes to a TAFKAL80ETC concert":
+			   return new BackstagePasses(name, sellIn, quality);
+			case "Sulfuras, Hand of Ragnaros":
+			   return new Sulfuras(name, sellIn, quality);
+			case "Conjured Mana Cake":
+			   return new Conjured(name, sellIn, quality);
+			default:
+			   return new StandardItem(name, sellIn, quality);
+		}
+	}
+
+
+====================================
+
+Question #02: What is the output of the algorithm below given that the item variable is of Retangulo type?
+
+	public Formato SelecionarFormato(object item)
+	{
+		if (item is FormatoPlanta formato)
+		{
+		  Formato formatoSelecionado = null;
+			
+		  switch (formato)
+		  {
+			 case FormatoPlanta.Quadrado:
+				formatoSelecionado = new Quadrado(Largura, Altura);
+				break;
+			 case FormatoPlanta.Retangulo:
+				formatoSelecionado = new Retangulo(Largura, Altura);
+				break;
+			 case FormatoPlanta.Triangulo:
+				formatoSelecionado = new Triangulo(Largura, Altura, 2);
+				break;
+		   }
+		   return formatoSelecionado;
+		}
+		else
+			return null;
+	}
+
+	public Formato SelecionarFormato(object item) 
+	{
+		return item switch
+		{
+		  FormatoPlanta.Quadrado => new Quadrado(Largura, Altura),
+		  FormatoPlanta.Retangulo => new Retangulo(Largura, Altura),
+		  FormatoPlanta.Triangulo => new Triangulo(Largura, Altura, 2),
+		  _ => null
+		};
+	}
+
+
+====================================
+
+Question #03: What will be written in the console given that the chosen color is Blue?
+
+	switch (car.Color) 
+	{
+		case Color.Red:
+			Console.WriteLine("Color is red!");
+			break;
+		case Color.Blue:
+			Console.WriteLine("Color is blue!");
+			break;
+		default:
+			Console.WriteLine("Color is not red or blue!");
+			break;
+	}
+
+	Console.WriteLine(car.Color switch
+	{
+		Color.Red => "Color is red!",
+		Color.Blue => "Color is blue!",
+		_ => "Color is not red or blue!"
+	});
+
+
+====================================
+
+Question #04: What is the output of the algorithm below given that the status of Bank is Closed?
+
+	static bool CheckIfCanWalkIntoBankSwitch(Bank bank, bool isVip)
+	{
+		bool result = false;
+
+		switch(bank.Status)
+		{
+			case BankBranchStatus.Open : 
+				result = true;
+				break;
+			
+			case BankBranchStatus.Closed : 
+				result = false;
+				break;
+			
+			case BankBranchStatus.VIPCustomersOnly : 
+				result = isVip;
+				break;
+		}
+
+		return result;
+	}
+
+	static bool CheckIfCanWalkIntoBank(Bank bank, bool isVip)
+	{
+		return bank switch
+		{
+			{ Status : BankBranchStatus.Open}  => true, 
+			{ Status : BankBranchStatus.Closed } => false, 
+			{ Status : BankBranchStatus.VIPCustomersOnly }  => isVip
+		};
+	}
+
+
+====================================
+
+Question #05: What is the output of the algorithm below given that item is a book whose publisher is AWL?
+
+	public override DataTemplate SelectTemplate(object item, DependencyObject container)
+	{
+		var book = item as Book;
+		if (book == null) return null;
+	 
+		DataTemplate selectedTemplate = null;
+		switch (book.Publisher)
+		{
+		  case "Wrox Press":
+			selectedTemplate = WroxBookTemplate;
+			break;
+		  case "AWL":
+			selectedTemplate = AWLBookTemplate;
+			break;
+		  default:
+			selectedTemplate = DefaultBookTemplate;
+			break;
+		}
+		return selectedTemplate;
+	}
+
+	public override DataTemplate? SelectTemplate(object item, DependencyObject container)
+	{
+		return item switch
+		{
+		  Book { Publisher: "Wrox Press" } => WroxBookTemplate,
+		  Book { Publisher: "AWL" } => AWLBookTemplate,
+		  Book _ => DefaultBookTemplate,
+		  _ => null
+		};
+	}
+
+
+====================================
+
+Question #06: What is the output of the algorithm below given that wekday is Friday?
+
+	private static bool IsWorkDay(DateTime weekDay)
+	{
+	   if (weekDay.DayOfWeek == DayOfWeek.Monday 
+		  || weekDay.DayOfWeek == DayOfWeek.Tuesday
+		  || weekDay.DayOfWeek == DayOfWeek.Wednesday 
+		  || weekDay.DayOfWeek == DayOfWeek.Thursday
+		  || weekDay.DayOfWeek == DayOfWeek.Friday)
+	  {
+		  return true;
+	  }
+
+	  return false;
+	}
+
+	private static bool IsWorkDay(DateTime weekDay)
+	{
+	   return weekDay.DayOfWeek switch
+	   {
+			DayOfWeek.Monday    => true,
+			DayOfWeek.Tuesday   => true,
+			DayOfWeek.Wednesday => true,
+			DayOfWeek.Thursday  => true,
+			DayOfWeek.Friday    => true,
+			DayOfWeek.Saturday  => false,
+			DayOfWeek.Sunday    => false
+	   };
+	}
+
+
+====================================
+
+Question #07: What is the output of the algorithm below given that the hour of timeOfToll is greater than 12?
+
+	private static TimeBand GetTimeBand(DateTime timeOfToll) 
+	{
+		if (timeOfToll.Hour < 6 || timeOfToll.Hour > 19)
+		   return TimeBand.Overnight;
+		else if (timeOfToll.Hour < 10)
+		   return TimeBand.MorningRush;
+		else if (timeOfToll.Hour < 16)
+		   return TimeBand.Daytime;
+
+		return TimeBand.EveningRush 	
+
+	}
+
+	private static TimeBand GetTimeBand(DateTime timeOfToll) 
+	{
+		timeOfToll.Hour switch
+		{
+			< 6 or > 19 => TimeBand.Overnight,
+			< 10 => TimeBand.MorningRush,
+			< 16 => TimeBand.Daytime,
+			_ => TimeBand.EveningRush,
+		};
+	}
+
+
+====================================
+
+Question #08: What is the output of the algorithm below given that the shape is a circle?
+
+	static double GetArea(this Shape shape)
+	{
+		switch (shape)
+		{
+			case Rectangle rectangle:
+				return rectangle.Height * rectangle.Width;
+			case Circle circle:
+				return Math.PI * circle.Radius * circle.Radius;
+			default:
+				throw new NotImplementedException();
+		}
+	}
+
+	static double GetArea(this Shape shape)
+	{
+		return shape switch
+		{
+		   Rectangle rectangle => rectangle.Height * rectangle.Width,
+		   Circle circle => Math.PI * circle.Radius * circle.Radius,
+		   _ => throw new ArgumentException()
+		};
+	}
+
+
+====================================
+
+Question #09: What is the output of the algorithm below given that "current" is Closed and "transition" is Open?
+
+	static State ChangeState(State current, Transition transition, bool hasKey) =>
+		(current, transition) switch
+		{
+			(Opened, Close)              => Closed,
+			(Closed, Open)               => Opened,
+			(Closed, Lock)   when hasKey => Locked,
+			(Locked, Unlock) when hasKey => Closed,
+			_ => throw 
+					new InvalidOperationException("Invalid transition")
+		};
+
+
+====================================
+
+Question #10: What is the output of the algorithm below given that hero equals to 9000?
+
+	static decimal GetFuelCost(Superhero hero) => hero.MaxSpeed switch
+		{
+			< 1000 => 10.00m,
+			<= 10000 => 7.00m,
+			_ => 12.00m
+		};

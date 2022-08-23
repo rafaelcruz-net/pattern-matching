@@ -7,9 +7,7 @@ library(gridExtra);
 library(finalfit);
 library(kableExtra);
 
-#setwd("C:\\Users\\rafae\\OneDrive\\Documentos\\Mestrado\\Tese\\pattern-matching\\")
 setwd("C:\\Users\\User\\Desktop\\Codigos\\pattern-matching\\")
-#setwd("~/Mestrado/tese/pattern-matching")
 
 
 #
@@ -195,6 +193,8 @@ genero_participantes %>%
   summarize(count = n(), .groups="keep") %>% 
   ungroup() %>% 
   mutate(perc = 100 * count / sum(count))
+
+
 
 
 
